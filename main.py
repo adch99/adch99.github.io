@@ -20,11 +20,11 @@ def preprocessing(csv_file):
 
 courses = preprocessing(dataFilename)
 instData = preprocessing(dataFilename)
+
 courses.rename(columns = {'id':'courseid'}, inplace = True)  # renamed column 'id' to 'courseid'
-
 courses_master_df = pd.merge(courses,instData,how='inner',on='courseid')   # merging the two dataframes based on column 'courseid'
-
 courses = courses_master_df.to_dict('records')   # converted merged dataframe to a dictionary that is list-like ('records')
+
 
 # Jinja Setup
 env = Environment(loader=FileSystemLoader(os.path.abspath(".")), autoescape=select_autoescape(["html"]))
