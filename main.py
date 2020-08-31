@@ -16,7 +16,6 @@ indexFilename = "index.html"
 def preprocessing(csv_file):
     df = pd.read_csv(csv_file, delimiter=",", header=0)  #reads the .csv file and uses 1st row as header
     df.replace(np.nan, "", regex=True, inplace=True) # replace all null values with blank
-    df = df.to_dict('records')  #creates a dictionary
     return df
 
 courses = preprocessing(dataFilename)
